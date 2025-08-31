@@ -1,9 +1,9 @@
-﻿using ASP.NET_Core_Identity.Data;
-using ASP.NET_Core_Identity.Repositories.Interfaces;
+﻿using DotNet.Web.Api.Template.Data;
+using DotNet.Web.Api.Template.Repositories.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
 
-namespace ASP.NET_Core_Identity.Repositories
+namespace DotNet.Web.Api.Template.Repositories
 {
     public class GenericRepository<T> : IGenericRepository<T> where T : class
     {

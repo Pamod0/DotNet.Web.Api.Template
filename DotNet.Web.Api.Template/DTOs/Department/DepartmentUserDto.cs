@@ -1,4 +1,4 @@
-﻿namespace ASP.NET_Core_Identity.DTOs.Department
+﻿namespace DotNet.Web.Api.Template.DTOs.Department
 {
     public class DepartmentUserDto
     {

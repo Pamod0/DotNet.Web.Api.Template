@@ -1,13 +1,13 @@
-﻿using ASP.NET_Core_Identity.DTOs.Department;
-using ASP.NET_Core_Identity.DTOs.Meeeting;
-using ASP.NET_Core_Identity.Models;
-using ASP.NET_Core_Identity.Services;
-using ASP.NET_Core_Identity.Services.Interfaces;
+﻿using DotNet.Web.Api.Template.DTOs.Department;
+using DotNet.Web.Api.Template.DTOs.Meeeting;
+using DotNet.Web.Api.Template.Models;
+using DotNet.Web.Api.Template.Services;
+using DotNet.Web.Api.Template.Services.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
 
-namespace ASP.NET_Core_Identity.Controllers
+namespace DotNet.Web.Api.Template.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

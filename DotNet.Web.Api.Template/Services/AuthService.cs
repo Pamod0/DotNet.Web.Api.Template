@@ -1,8 +1,8 @@
-﻿using ASP.NET_Core_Identity.DTOs.Auth;
-using ASP.NET_Core_Identity.Models.Auth;
-using ASP.NET_Core_Identity.Models;
-using ASP.NET_Core_Identity.Models.User;
-using ASP.NET_Core_Identity.Services.Interfaces;
+﻿using DotNet.Web.Api.Template.DTOs.Auth;
+using DotNet.Web.Api.Template.Models.Auth;
+using DotNet.Web.Api.Template.Models;
+using DotNet.Web.Api.Template.Models.User;
+using DotNet.Web.Api.Template.Services.Interfaces;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
@@ -11,7 +11,7 @@ using System.Security.Claims;
 using System.Text;
 using Task = System.Threading.Tasks.Task;
 
-namespace ASP.NET_Core_Identity.Services
+namespace DotNet.Web.Api.Template.Services
 {
     public class AuthService : IAuthService
     {

@@ -1,12 +1,12 @@
-﻿using ASP.NET_Core_Identity.DTOs.User;
-using ASP.NET_Core_Identity.Helpers;
-using ASP.NET_Core_Identity.Models;
-using ASP.NET_Core_Identity.Models.Auth;
-using ASP.NET_Core_Identity.Services.Interfaces;
+﻿using DotNet.Web.Api.Template.DTOs.User;
+using DotNet.Web.Api.Template.Helpers;
+using DotNet.Web.Api.Template.Models;
+using DotNet.Web.Api.Template.Models.Auth;
+using DotNet.Web.Api.Template.Services.Interfaces;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
-namespace ASP.NET_Core_Identity.Services
+namespace DotNet.Web.Api.Template.Services
 {
     public class UserService : IUserService
     {

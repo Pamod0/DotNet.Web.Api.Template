@@ -1,15 +1,15 @@
-﻿using ASP.NET_Core_Identity.DTOs.Decision;
-using ASP.NET_Core_Identity.DTOs.Meeeting;
-using ASP.NET_Core_Identity.Hubs;
-using ASP.NET_Core_Identity.Models;
-using ASP.NET_Core_Identity.Services;
-using ASP.NET_Core_Identity.Services.Interfaces;
+﻿using DotNet.Web.Api.Template.DTOs.Decision;
+using DotNet.Web.Api.Template.DTOs.Meeeting;
+using DotNet.Web.Api.Template.Hubs;
+using DotNet.Web.Api.Template.Models;
+using DotNet.Web.Api.Template.Services;
+using DotNet.Web.Api.Template.Services.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SignalR;
 using System.Security.Claims;
 
-namespace ASP.NET_Core_Identity.Controllers
+namespace DotNet.Web.Api.Template.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

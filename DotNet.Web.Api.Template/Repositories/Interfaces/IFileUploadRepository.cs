@@ -1,7 +1,7 @@
-﻿using ASP.NET_Core_Identity.DTOs;
-using ASP.NET_Core_Identity.Models.FileUploads;
+﻿using DotNet.Web.Api.Template.DTOs;
+using DotNet.Web.Api.Template.Models.FileUploads;
 
-namespace ASP.NET_Core_Identity.Repositories.Interfaces
+namespace DotNet.Web.Api.Template.Repositories.Interfaces
 {
     public interface IFileUploadRepository
     {

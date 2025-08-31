@@ -1,4 +1,4 @@
-﻿namespace ASP.NET_Core_Identity.DTOs.Auth
+﻿namespace DotNet.Web.Api.Template.DTOs.Auth
 {
     public class LockoutUserRequest
     {

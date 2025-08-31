@@ -1,8 +1,8 @@
-﻿using ASP.NET_Core_Identity.DTOs.Decision;
-using ASP.NET_Core_Identity.Models;
+﻿using DotNet.Web.Api.Template.DTOs.Decision;
+using DotNet.Web.Api.Template.Models;
 using Microsoft.AspNetCore.JsonPatch;
 
-namespace ASP.NET_Core_Identity.Services.Interfaces
+namespace DotNet.Web.Api.Template.Services.Interfaces
 {
     public interface IDecisionService
     {

@@ -1,4 +1,4 @@
-﻿namespace ASP.NET_Core_Identity.Models.Notification
+﻿namespace DotNet.Web.Api.Template.Models.Notification
 {
     public class Notification : BaseEntity
     {

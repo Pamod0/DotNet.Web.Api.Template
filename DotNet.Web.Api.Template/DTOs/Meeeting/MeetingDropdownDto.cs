@@ -1,4 +1,4 @@
-﻿namespace ASP.NET_Core_Identity.DTOs.Meeeting
+﻿namespace DotNet.Web.Api.Template.DTOs.Meeeting
 {
     public class MeetingDropdownDto
     {

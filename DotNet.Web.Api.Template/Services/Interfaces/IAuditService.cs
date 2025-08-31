@@ -1,7 +1,7 @@
-﻿using ASP.NET_Core_Identity.DTOs.Audit;
-using ASP.NET_Core_Identity.Models;
+﻿using DotNet.Web.Api.Template.DTOs.Audit;
+using DotNet.Web.Api.Template.Models;
 
-namespace ASP.NET_Core_Identity.Services.Interfaces
+namespace DotNet.Web.Api.Template.Services.Interfaces
 {
     public interface IAuditService
     {

@@ -1,12 +1,12 @@
-﻿using ASP.NET_Core_Identity.Data;
-using ASP.NET_Core_Identity.DTOs.Meeeting;
-using ASP.NET_Core_Identity.Models.Decisions;
-using ASP.NET_Core_Identity.Models.FileUploads;
-using ASP.NET_Core_Identity.Repositories.Interfaces;
+﻿using DotNet.Web.Api.Template.Data;
+using DotNet.Web.Api.Template.DTOs.Meeeting;
+using DotNet.Web.Api.Template.Models.Decisions;
+using DotNet.Web.Api.Template.Models.FileUploads;
+using DotNet.Web.Api.Template.Repositories.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using Task = System.Threading.Tasks.Task;
 
-namespace ASP.NET_Core_Identity.Repositories
+namespace DotNet.Web.Api.Template.Repositories
 {
     public class MeetingRepository : IMeetingRepository
     {

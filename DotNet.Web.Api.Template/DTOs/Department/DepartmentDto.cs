@@ -1,7 +1,7 @@
-﻿using ASP.NET_Core_Identity.DTOs.User;
-using ASP.NET_Core_Identity.Models.Auth;
+﻿using DotNet.Web.Api.Template.DTOs.User;
+using DotNet.Web.Api.Template.Models.Auth;
 
-namespace ASP.NET_Core_Identity.DTOs.Department
+namespace DotNet.Web.Api.Template.DTOs.Department
 {
     public class DepartmentDto
     {

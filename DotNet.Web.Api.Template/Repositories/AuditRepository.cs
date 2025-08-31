@@ -1,11 +1,11 @@
-﻿using ASP.NET_Core_Identity.Data;
-using ASP.NET_Core_Identity.DTOs.Department;
-using ASP.NET_Core_Identity.Models;
-using ASP.NET_Core_Identity.Models.Audit;
-using ASP.NET_Core_Identity.Repositories.Interfaces;
+﻿using DotNet.Web.Api.Template.Data;
+using DotNet.Web.Api.Template.DTOs.Department;
+using DotNet.Web.Api.Template.Models;
+using DotNet.Web.Api.Template.Models.Audit;
+using DotNet.Web.Api.Template.Repositories.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
-namespace ASP.NET_Core_Identity.Repositories
+namespace DotNet.Web.Api.Template.Repositories
 {
     public class AuditRepository : IAuditRepository
     {

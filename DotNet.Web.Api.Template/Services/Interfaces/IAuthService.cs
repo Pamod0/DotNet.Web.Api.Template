@@ -1,9 +1,9 @@
-﻿using ASP.NET_Core_Identity.DTOs.Auth;
-using ASP.NET_Core_Identity.Models.Auth;
-using ASP.NET_Core_Identity.Models.User;
+﻿using DotNet.Web.Api.Template.DTOs.Auth;
+using DotNet.Web.Api.Template.Models.Auth;
+using DotNet.Web.Api.Template.Models.User;
 using Microsoft.AspNetCore.Identity;
 
-namespace ASP.NET_Core_Identity.Services.Interfaces
+namespace DotNet.Web.Api.Template.Services.Interfaces
 {
     public interface IAuthService
     {

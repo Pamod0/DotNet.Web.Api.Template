@@ -1,8 +1,8 @@
-﻿using ASP.NET_Core_Identity.DTOs.Decision;
-using ASP.NET_Core_Identity.DTOs.Department;
-using ASP.NET_Core_Identity.Models.FileUploads;
+﻿using DotNet.Web.Api.Template.DTOs.Decision;
+using DotNet.Web.Api.Template.DTOs.Department;
+using DotNet.Web.Api.Template.Models.FileUploads;
 
-namespace ASP.NET_Core_Identity.DTOs.Meeeting
+namespace DotNet.Web.Api.Template.DTOs.Meeeting
 {
     public class MeetingDto
     {

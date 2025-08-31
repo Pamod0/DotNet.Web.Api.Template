@@ -1,17 +1,17 @@
-﻿using ASP.NET_Core_Identity.Configurations;
-using ASP.NET_Core_Identity.DTOs;
-using ASP.NET_Core_Identity.DTOs.Department;
-using ASP.NET_Core_Identity.DTOs.Meeeting;
-using ASP.NET_Core_Identity.Models;
-using ASP.NET_Core_Identity.Models.Decisions;
-using ASP.NET_Core_Identity.Models.FileUploads;
-using ASP.NET_Core_Identity.Repositories.Interfaces;
-using ASP.NET_Core_Identity.Services.Interfaces;
+﻿using DotNet.Web.Api.Template.Configurations;
+using DotNet.Web.Api.Template.DTOs;
+using DotNet.Web.Api.Template.DTOs.Department;
+using DotNet.Web.Api.Template.DTOs.Meeeting;
+using DotNet.Web.Api.Template.Models;
+using DotNet.Web.Api.Template.Models.Decisions;
+using DotNet.Web.Api.Template.Models.FileUploads;
+using DotNet.Web.Api.Template.Repositories.Interfaces;
+using DotNet.Web.Api.Template.Services.Interfaces;
 using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 
-namespace ASP.NET_Core_Identity.Services
+namespace DotNet.Web.Api.Template.Services
 {
     public class LocalStorageService : IFileStorageService
     {

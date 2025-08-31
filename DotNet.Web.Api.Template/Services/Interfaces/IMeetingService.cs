@@ -1,8 +1,8 @@
-﻿using ASP.NET_Core_Identity.DTOs.Decision;
-using ASP.NET_Core_Identity.DTOs.Meeeting;
-using ASP.NET_Core_Identity.Models;
+﻿using DotNet.Web.Api.Template.DTOs.Decision;
+using DotNet.Web.Api.Template.DTOs.Meeeting;
+using DotNet.Web.Api.Template.Models;
 
-namespace ASP.NET_Core_Identity.Services.Interfaces
+namespace DotNet.Web.Api.Template.Services.Interfaces
 {
     public interface IMeetingService
     {

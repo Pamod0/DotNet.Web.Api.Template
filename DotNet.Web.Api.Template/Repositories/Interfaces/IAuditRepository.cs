@@ -1,8 +1,8 @@
-﻿using ASP.NET_Core_Identity.DTOs.Department;
-using ASP.NET_Core_Identity.Models;
-using ASP.NET_Core_Identity.Models.Audit;
+﻿using DotNet.Web.Api.Template.DTOs.Department;
+using DotNet.Web.Api.Template.Models;
+using DotNet.Web.Api.Template.Models.Audit;
 
-namespace ASP.NET_Core_Identity.Repositories.Interfaces
+namespace DotNet.Web.Api.Template.Repositories.Interfaces
 {
     public interface IAuditRepository
     {

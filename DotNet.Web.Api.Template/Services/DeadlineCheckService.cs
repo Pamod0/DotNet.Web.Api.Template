@@ -1,6 +1,6 @@
-﻿using ASP.NET_Core_Identity.Repositories.Interfaces;
+﻿using DotNet.Web.Api.Template.Repositories.Interfaces;
 
-namespace ASP.NET_Core_Identity.Services
+namespace DotNet.Web.Api.Template.Services
 {
     public class DeadlineCheckService : BackgroundService
     {

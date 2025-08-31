@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace ASP.NET_Core_Identity.DTOs.User
+namespace DotNet.Web.Api.Template.DTOs.User
 {
     public class UpdateUserDto
     {

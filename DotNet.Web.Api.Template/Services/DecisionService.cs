@@ -1,18 +1,18 @@
-﻿using ASP.NET_Core_Identity.Data;
-using ASP.NET_Core_Identity.DTOs.Decision;
-using ASP.NET_Core_Identity.DTOs.Meeeting;
-using ASP.NET_Core_Identity.Models;
-using ASP.NET_Core_Identity.Models.Decisions;
-using ASP.NET_Core_Identity.Repositories;
-using ASP.NET_Core_Identity.Repositories.Interfaces;
-using ASP.NET_Core_Identity.Services.Interfaces;
+﻿using DotNet.Web.Api.Template.Data;
+using DotNet.Web.Api.Template.DTOs.Decision;
+using DotNet.Web.Api.Template.DTOs.Meeeting;
+using DotNet.Web.Api.Template.Models;
+using DotNet.Web.Api.Template.Models.Decisions;
+using DotNet.Web.Api.Template.Repositories;
+using DotNet.Web.Api.Template.Repositories.Interfaces;
+using DotNet.Web.Api.Template.Services.Interfaces;
 using AutoMapper;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using System.Security.Claims;
 
-namespace ASP.NET_Core_Identity.Services
+namespace DotNet.Web.Api.Template.Services
 {
     public class DecisionService : IDecisionService
     {

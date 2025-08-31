@@ -1,9 +1,9 @@
-﻿using ASP.NET_Core_Identity.DTOs.Department;
-using ASP.NET_Core_Identity.Models;
-using ASP.NET_Core_Identity.Models.Decisions;
+﻿using DotNet.Web.Api.Template.DTOs.Department;
+using DotNet.Web.Api.Template.Models;
+using DotNet.Web.Api.Template.Models.Decisions;
 using Task = System.Threading.Tasks.Task;
 
-namespace ASP.NET_Core_Identity.Repositories.Interfaces
+namespace DotNet.Web.Api.Template.Repositories.Interfaces
 {
     public interface IDepartmentRepository
     {

@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 
-namespace ASP.NET_Core_Identity.Controllers
+namespace DotNet.Web.Api.Template.Controllers
 {
     [ApiController]
     [Route("[controller]")]

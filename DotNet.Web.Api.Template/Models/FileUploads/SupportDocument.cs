@@ -1,9 +1,9 @@
-﻿using ASP.NET_Core_Identity.Models.Auth;
-using ASP.NET_Core_Identity.Models.Decisions;
+﻿using DotNet.Web.Api.Template.Models.Auth;
+using DotNet.Web.Api.Template.Models.Decisions;
 using System.ComponentModel.DataAnnotations;
-using Task = ASP.NET_Core_Identity.Models.Decisions.Task;
+using Task = DotNet.Web.Api.Template.Models.Decisions.Task;
 
-namespace ASP.NET_Core_Identity.Models.FileUploads
+namespace DotNet.Web.Api.Template.Models.FileUploads
 {
     public class SupportDocument : BaseEntity
     {

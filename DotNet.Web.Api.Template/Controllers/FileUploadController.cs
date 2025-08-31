@@ -1,10 +1,10 @@
-﻿using ASP.NET_Core_Identity.DTOs;
-using ASP.NET_Core_Identity.Repositories.Interfaces;
-using ASP.NET_Core_Identity.Services.Interfaces;
+﻿using DotNet.Web.Api.Template.DTOs;
+using DotNet.Web.Api.Template.Repositories.Interfaces;
+using DotNet.Web.Api.Template.Services.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-namespace ASP.NET_Core_Identity.Controllers
+namespace DotNet.Web.Api.Template.Controllers
 {
     [Authorize]
     [ApiController]

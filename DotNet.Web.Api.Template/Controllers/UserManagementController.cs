@@ -1,15 +1,15 @@
-﻿using ASP.NET_Core_Identity.DTOs;
-using ASP.NET_Core_Identity.DTOs.User;
-using ASP.NET_Core_Identity.Models;
-using ASP.NET_Core_Identity.Models.Auth;
-using ASP.NET_Core_Identity.Repositories.Interfaces;
-using ASP.NET_Core_Identity.Services.Interfaces;
+﻿using DotNet.Web.Api.Template.DTOs;
+using DotNet.Web.Api.Template.DTOs.User;
+using DotNet.Web.Api.Template.Models;
+using DotNet.Web.Api.Template.Models.Auth;
+using DotNet.Web.Api.Template.Repositories.Interfaces;
+using DotNet.Web.Api.Template.Services.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
 
-namespace ASP.NET_Core_Identity.Controllers
+namespace DotNet.Web.Api.Template.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]

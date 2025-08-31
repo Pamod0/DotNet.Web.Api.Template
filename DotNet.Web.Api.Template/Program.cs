@@ -1,14 +1,14 @@
-using ASP.NET_Core_Identity.Configurations;
-using ASP.NET_Core_Identity.Data;
-using ASP.NET_Core_Identity.Helpers;
-using ASP.NET_Core_Identity.Hubs;
-using ASP.NET_Core_Identity.Models;
-using ASP.NET_Core_Identity.Models.Auth;
-using ASP.NET_Core_Identity.Models.User;
-using ASP.NET_Core_Identity.Repositories;
-using ASP.NET_Core_Identity.Repositories.Interfaces;
-using ASP.NET_Core_Identity.Services;
-using ASP.NET_Core_Identity.Services.Interfaces;
+using DotNet.Web.Api.Template.Configurations;
+using DotNet.Web.Api.Template.Data;
+using DotNet.Web.Api.Template.Helpers;
+using DotNet.Web.Api.Template.Hubs;
+using DotNet.Web.Api.Template.Models;
+using DotNet.Web.Api.Template.Models.Auth;
+using DotNet.Web.Api.Template.Models.User;
+using DotNet.Web.Api.Template.Repositories;
+using DotNet.Web.Api.Template.Repositories.Interfaces;
+using DotNet.Web.Api.Template.Services;
+using DotNet.Web.Api.Template.Services.Interfaces;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -164,7 +164,7 @@ builder.Services.AddControllers()
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c =>
 {
-    c.SwaggerDoc("v1", new() { Title = "Auth API", Version = "v1" });
+    c.SwaggerDoc("v1", new() { Title = "DotNet.Web.Api.Template", Version = "v1" });
 
     // Add JWT Authentication support in Swagger
     c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme

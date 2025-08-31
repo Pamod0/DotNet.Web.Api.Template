@@ -1,18 +1,18 @@
-﻿using ASP.NET_Core_Identity.Models;
-using ASP.NET_Core_Identity.Models.Audit;
-using ASP.NET_Core_Identity.Models.Auth;
-using ASP.NET_Core_Identity.Models.Decisions;
-using ASP.NET_Core_Identity.Models.FileUploads;
-using ASP.NET_Core_Identity.Models.Notification;
+﻿using DotNet.Web.Api.Template.Models;
+using DotNet.Web.Api.Template.Models.Audit;
+using DotNet.Web.Api.Template.Models.Auth;
+using DotNet.Web.Api.Template.Models.Decisions;
+using DotNet.Web.Api.Template.Models.FileUploads;
+using DotNet.Web.Api.Template.Models.Notification;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Newtonsoft.Json;
 using System.Security.Claims;
-using Task = ASP.NET_Core_Identity.Models.Decisions.Task;
+using Task = DotNet.Web.Api.Template.Models.Decisions.Task;
 
-namespace ASP.NET_Core_Identity.Data
+namespace DotNet.Web.Api.Template.Data
 {
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser, ApplicationRole, Guid>
     {

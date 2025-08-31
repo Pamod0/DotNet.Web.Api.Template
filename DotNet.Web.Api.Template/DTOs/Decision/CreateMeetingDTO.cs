@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace ASP.NET_Core_Identity.DTOs.Decision
+namespace DotNet.Web.Api.Template.DTOs.Decision
 {
     public class CreateMeetingDTO
     {

@@ -1,4 +1,4 @@
-﻿namespace ASP.NET_Core_Identity.Models
+﻿namespace DotNet.Web.Api.Template.Models
 {
     public class ApiResponse
     {

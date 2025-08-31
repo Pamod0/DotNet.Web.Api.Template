@@ -1,4 +1,4 @@
-﻿namespace ASP.NET_Core_Identity.DTOs.Audit
+﻿namespace DotNet.Web.Api.Template.DTOs.Audit
 {
     public class AuditEntryDto
     {

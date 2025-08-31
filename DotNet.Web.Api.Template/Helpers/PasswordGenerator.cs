@@ -1,7 +1,7 @@
 ﻿using System.Security.Cryptography;
 using System.Text;
 
-namespace ASP.NET_Core_Identity.Helpers
+namespace DotNet.Web.Api.Template.Helpers
 {
     public static class PasswordGenerator
     {

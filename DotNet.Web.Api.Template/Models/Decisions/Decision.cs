@@ -1,8 +1,8 @@
-﻿using ASP.NET_Core_Identity.Models.FileUploads;
+﻿using DotNet.Web.Api.Template.Models.FileUploads;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace ASP.NET_Core_Identity.Models.Decisions
+namespace DotNet.Web.Api.Template.Models.Decisions
 {
     public class Decision : BaseEntity
     {

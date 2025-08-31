@@ -1,16 +1,16 @@
-﻿using ASP.NET_Core_Identity.DTOs;
-using ASP.NET_Core_Identity.DTOs.Decision;
-using ASP.NET_Core_Identity.DTOs.Department;
-using ASP.NET_Core_Identity.DTOs.Meeeting;
-using ASP.NET_Core_Identity.DTOs.User;
-using ASP.NET_Core_Identity.Models;
-using ASP.NET_Core_Identity.Models.Auth;
-using ASP.NET_Core_Identity.Models.Decisions;
-using ASP.NET_Core_Identity.Models.FileUploads;
+﻿using DotNet.Web.Api.Template.DTOs;
+using DotNet.Web.Api.Template.DTOs.Decision;
+using DotNet.Web.Api.Template.DTOs.Department;
+using DotNet.Web.Api.Template.DTOs.Meeeting;
+using DotNet.Web.Api.Template.DTOs.User;
+using DotNet.Web.Api.Template.Models;
+using DotNet.Web.Api.Template.Models.Auth;
+using DotNet.Web.Api.Template.Models.Decisions;
+using DotNet.Web.Api.Template.Models.FileUploads;
 using AutoMapper;
-using Task = ASP.NET_Core_Identity.Models.Decisions.Task;
+using Task = DotNet.Web.Api.Template.Models.Decisions.Task;
 
-namespace ASP.NET_Core_Identity.Helpers
+namespace DotNet.Web.Api.Template.Helpers
 {
     public class MappingProfile : Profile
     {

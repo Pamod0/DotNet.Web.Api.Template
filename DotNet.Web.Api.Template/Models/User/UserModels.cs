@@ -1,4 +1,4 @@
-﻿namespace ASP.NET_Core_Identity.Models.User
+﻿namespace DotNet.Web.Api.Template.Models.User
 {
     public class LoginUser
     {

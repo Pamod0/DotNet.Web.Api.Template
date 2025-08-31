@@ -1,4 +1,4 @@
-namespace ASP.NET_Core_Identity
+namespace DotNet.Web.Api.Template
 {
     public class WeatherForecast
     {

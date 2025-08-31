@@ -1,4 +1,4 @@
-﻿namespace ASP.NET_Core_Identity.Models.Audit
+﻿namespace DotNet.Web.Api.Template.Models.Audit
 {
     public class AuditEntry
     {

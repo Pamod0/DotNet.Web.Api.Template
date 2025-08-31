@@ -2,7 +2,7 @@
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
-namespace ASP.NET_Core_Identity.DTOs.Meeeting
+namespace DotNet.Web.Api.Template.DTOs.Meeeting
 {
     public class UpdateMeetingDto
     {

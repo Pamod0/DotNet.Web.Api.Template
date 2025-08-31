@@ -1,15 +1,15 @@
-﻿using ASP.NET_Core_Identity.Data;
-using ASP.NET_Core_Identity.DTOs.Decision;
-using ASP.NET_Core_Identity.DTOs.Meeeting;
-using ASP.NET_Core_Identity.Hubs;
-using ASP.NET_Core_Identity.Models.Auth;
-using ASP.NET_Core_Identity.Models.Notification;
-using ASP.NET_Core_Identity.Services.Interfaces;
+﻿using DotNet.Web.Api.Template.Data;
+using DotNet.Web.Api.Template.DTOs.Decision;
+using DotNet.Web.Api.Template.DTOs.Meeeting;
+using DotNet.Web.Api.Template.Hubs;
+using DotNet.Web.Api.Template.Models.Auth;
+using DotNet.Web.Api.Template.Models.Notification;
+using DotNet.Web.Api.Template.Services.Interfaces;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.SignalR;
 using Microsoft.EntityFrameworkCore;
 
-namespace ASP.NET_Core_Identity.Services
+namespace DotNet.Web.Api.Template.Services
 {
     public class NotificationService : INotificationService
     {

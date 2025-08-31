@@ -1,9 +1,9 @@
-﻿using ASP.NET_Core_Identity.DTOs.Meeeting;
-using ASP.NET_Core_Identity.Models.Decisions;
-using ASP.NET_Core_Identity.Models.FileUploads;
+﻿using DotNet.Web.Api.Template.DTOs.Meeeting;
+using DotNet.Web.Api.Template.Models.Decisions;
+using DotNet.Web.Api.Template.Models.FileUploads;
 using Task = System.Threading.Tasks.Task;
 
-namespace ASP.NET_Core_Identity.Repositories.Interfaces
+namespace DotNet.Web.Api.Template.Repositories.Interfaces
 {
     public interface IMeetingRepository
     {

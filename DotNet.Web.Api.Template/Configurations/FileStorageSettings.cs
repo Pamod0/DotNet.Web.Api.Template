@@ -1,4 +1,4 @@
-﻿namespace ASP.NET_Core_Identity.Configurations
+﻿namespace DotNet.Web.Api.Template.Configurations
 {
     public class FileStorageSettings
     {

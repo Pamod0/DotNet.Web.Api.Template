@@ -1,4 +1,4 @@
-﻿namespace ASP.NET_Core_Identity.DTOs
+﻿namespace DotNet.Web.Api.Template.DTOs
 {
     public class SupportDocumentTypesDto
     {

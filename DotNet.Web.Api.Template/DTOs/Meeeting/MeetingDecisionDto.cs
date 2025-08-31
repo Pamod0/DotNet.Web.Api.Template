@@ -1,6 +1,6 @@
-﻿using ASP.NET_Core_Identity.Models.Decisions;
+﻿using DotNet.Web.Api.Template.Models.Decisions;
 
-namespace ASP.NET_Core_Identity.DTOs.Meeeting
+namespace DotNet.Web.Api.Template.DTOs.Meeeting
 {
     public class MeetingDecisionDto
     {

@@ -1,6 +1,6 @@
-﻿using ASP.NET_Core_Identity.Models.FileUploads;
+﻿using DotNet.Web.Api.Template.Models.FileUploads;
 
-namespace ASP.NET_Core_Identity.Models.Decisions
+namespace DotNet.Web.Api.Template.Models.Decisions
 {
     public class Meeting : BaseEntity
     {
