@@ -1,0 +1,18 @@
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace ASP.NET_Core_Identity.DTOs.User
+{
+    public class UpdateUserDto
+    {
+        [Required]
+        public required Guid Id { get; set; }
+        public string? FirstName { get; set; }
+        public string? LastName { get; set; }
+        public Guid? DepartmentId { get; set; }
+
+        [EmailAddress]
+        public string? Email { get; set; }
+        public string? Role { get; set; }
+        public string? UserAccountStatus { get; set; } = null;
+    }
+}

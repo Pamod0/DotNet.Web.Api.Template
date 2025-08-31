@@ -1,0 +1,13 @@
+﻿namespace ASP.NET_Core_Identity.Models.Audit
+{
+    public class AuditEntry
+    {
+        public Guid Id { get; set; }
+        public Guid UserId { get; set; }
+        public string EntityName { get; set; }
+        public string ActionType { get; set; } // e.g., "Created", "Updated", "Deleted"
+        public DateTime Timestamp { get; set; }
+        public string Changes { get; set; } // JSON string of old and new values
+        public string EntityId { get; set; } // To link back to the modified entity
+    }
+}
