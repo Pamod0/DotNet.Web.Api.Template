@@ -1,7 +1,6 @@
 ﻿using DotNet.Web.Api.Template.Models;
 using DotNet.Web.Api.Template.Models.Audit;
 using DotNet.Web.Api.Template.Models.Auth;
-using DotNet.Web.Api.Template.Models.Decisions;
 using DotNet.Web.Api.Template.Models.FileUploads;
 using DotNet.Web.Api.Template.Models.Notification;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
@@ -10,7 +9,6 @@ using Microsoft.EntityFrameworkCore.ChangeTracking;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Newtonsoft.Json;
 using System.Security.Claims;
-using Task = DotNet.Web.Api.Template.Models.Decisions.Task;
 
 namespace DotNet.Web.Api.Template.Data
 {
@@ -28,13 +26,7 @@ namespace DotNet.Web.Api.Template.Data
         public DbSet<UserActionLog> UserActionLogs { get; set; }
         public DbSet<Notification> Notifications { get; set; }
 
-        public DbSet<Decision> Decisions { get; set; }
-        public DbSet<Task> Tasks { get; set; }
-        public DbSet<Department> Departments { get; set; }
         public DbSet<SupportDocument> SupportDocuments { get; set; }
-        public DbSet<Meeting> Meetings { get; set; }
-        public DbSet<MeetingDepartment> MeetingDepartments { get; set; }
-        public DbSet<DecisionDepartment> DecisionDepartments { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
@@ -54,120 +46,22 @@ namespace DotNet.Web.Api.Template.Data
                 }
             }
 
-            builder.Entity<Decision>(entity =>
-            {
-                entity.HasKey(e => e.Id);
-                entity.Property(e => e.ReferenceId).IsRequired().HasMaxLength(50);
-                entity.Property(e => e.Description).IsRequired().HasMaxLength(1000);
-                entity.Property(e => e.DecisionDate).IsRequired();
-                entity.Property(e => e.UpdatedAt).IsRequired();
-                entity.Property(e => e.DecisionType).IsRequired();
-                entity.Property(e => e.Status).IsRequired();
-
-                entity.HasOne(d => d.Meeting)
-                      .WithMany(m => m.Decisions)
-                      .HasForeignKey(d => d.MeetingId)
-                      .OnDelete(DeleteBehavior.Cascade);
-            });
-
-            builder.Entity<Task>(entity =>
-            {
-                entity.HasKey(e => e.Id);
-                entity.Property(e => e.Name).IsRequired().HasMaxLength(200);
-
-                entity.HasMany(t => t.SupportDocuments)
-                      .WithOne(sd => sd.Task)
-                      .HasForeignKey(sd => sd.TaskId)
-                      .IsRequired(false)
-                      .OnDelete(DeleteBehavior.Cascade);
-            });
-
             builder.Entity<SupportDocument>(entity =>
             {
                 entity.HasKey(e => e.Id);
                 entity.Property(e => e.FileName).IsRequired().HasMaxLength(255);
                 entity.Property(e => e.FilePath).IsRequired().HasMaxLength(500);
-
-                entity.HasOne(sd => sd.Decision)
-                      .WithMany(d => d.SupportDocuments)
-                      .HasForeignKey(sd => sd.DecisionId)
-                      .IsRequired(false)
-                      .OnDelete(DeleteBehavior.Cascade);
-
-                entity.HasOne(sd => sd.Meeting)
-                      .WithMany(d => d.SupportDocuments)
-                      .HasForeignKey(sd => sd.MeetingId)
-                      .IsRequired(false)
-                      .OnDelete(DeleteBehavior.Cascade);
-            });
-
-            builder.Entity<Department>(entity =>
-            {
-                entity.HasKey(e => e.Id);
-                entity.Property(e => e.Name).IsRequired().HasMaxLength(100);
-                entity.Property(e => e.ShortName).IsRequired().HasMaxLength(10);
-            });
-
-            builder.Entity<Meeting>(entity =>
-            {
-                entity.HasKey(e => e.Id);
-            });
-
-            builder.Entity<MeetingDepartment>(entity =>
-            {
-                entity.HasKey(md => new { md.MeetingId, md.DepartmentId });
-
-                entity.HasOne(md => md.Meeting)
-                      .WithMany(m => m.MeetingDepartments)
-                      .HasForeignKey(md => md.MeetingId)
-                      .OnDelete(DeleteBehavior.Cascade);
-
-                entity.HasOne(md => md.Department)
-                      .WithMany(d => d.MeetingDepartments)
-                      .HasForeignKey(md => md.DepartmentId)
-                      .OnDelete(DeleteBehavior.Restrict);
-            });
-
-            builder.Entity<DecisionDepartment>(entity =>
-            {
-                entity.HasKey(dd => new { dd.DecisionId, dd.DepartmentId });
-
-                entity.HasOne(dd => dd.Decision)
-                      .WithMany(d => d.DecisionDepartments)
-                      .HasForeignKey(dd => dd.DecisionId)
-                      .OnDelete(DeleteBehavior.Cascade);
-
-                entity.HasOne(dd => dd.Department)
-                      .WithMany(d => d.DecisionDepartments)
-                      .HasForeignKey(dd => dd.DepartmentId)
-                      .OnDelete(DeleteBehavior.Restrict);
-            });
-
-            builder.Entity<TaskDepartment>(entity =>
-            {
-                entity.HasKey(td => new { td.TaskId, td.DepartmentId }); // Composite primary key
-
-                entity.HasOne(td => td.Task)
-                      .WithMany(t => t.TaskDepartments)
-                      .HasForeignKey(td => td.TaskId)
-                      .OnDelete(DeleteBehavior.Cascade); // Adjust delete behavior as needed
-
-                entity.HasOne(td => td.Department)
-                      .WithMany(d => d.TaskDepartments)
-                      .HasForeignKey(td => td.DepartmentId)
-                      .OnDelete(DeleteBehavior.Restrict); // Adjust delete behavior as needed
             });
 
             // Seed roles (remain here as they are part of Identity setup)
             builder.Entity<ApplicationRole>().HasData(
                 new ApplicationRole { Id = Guid.Parse("00000000-0000-0000-0000-000000000001"), Name = "Admin", NormalizedName = "ADMIN" },
-                new ApplicationRole { Id = Guid.Parse("00000000-0000-0000-0000-000000000002"), Name = "User", NormalizedName = "USER" },
-                new ApplicationRole { Id = Guid.Parse("00000000-0000-0000-0000-000000000003"), Name = "ExcoMember", NormalizedName = "EXCOMEMBER" }
+                new ApplicationRole { Id = Guid.Parse("00000000-0000-0000-0000-000000000002"), Name = "User", NormalizedName = "USER" }
             );
 
         }
 
-        public override async System.Threading.Tasks.Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
+        public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
         {
             // Get current user ID
             var userId = GetCurrentUserId();

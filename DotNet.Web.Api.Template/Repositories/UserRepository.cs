@@ -50,12 +50,5 @@ namespace DotNet.Web.Api.Template.Repositories
             }
         }
 
-        public async Task<IEnumerable<ApplicationUser>> GetAllUsersInDepartmentAsync(Guid departmentId)
-        {
-            return await _context.Users
-                .Where(user => !user.IsDeleted && user.DepartmentId == departmentId)
-                .ToListAsync();
-        }
-
     }
 }

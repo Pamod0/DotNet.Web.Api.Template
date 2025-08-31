@@ -1,6 +1,5 @@
 ﻿using DotNet.Web.Api.Template.Data;
 using DotNet.Web.Api.Template.DTOs;
-using DotNet.Web.Api.Template.Models.Decisions;
 using DotNet.Web.Api.Template.Models.FileUploads;
 using DotNet.Web.Api.Template.Repositories.Interfaces;
 using Microsoft.EntityFrameworkCore;
@@ -29,15 +28,6 @@ namespace DotNet.Web.Api.Template.Repositories
 
             switch (relatedEntityName)
             {
-                case "Decision":
-                    supportDocument.DecisionId = relatedEntityId;
-                    break;
-                case "Task":
-                    supportDocument.TaskId = relatedEntityId;
-                    break;
-                case "Meeting":
-                    supportDocument.MeetingId = relatedEntityId;
-                    break;
                 case "UserProfile":
                     supportDocument.UserProfileID = relatedEntityId;
                     break;
@@ -65,12 +55,6 @@ namespace DotNet.Web.Api.Template.Repositories
             {
                 return await _context.SupportDocuments
                     .Where(sd => !sd.IsDeleted &&
-                        (string.IsNullOrWhiteSpace(supportDocumentTypesDto.DecisionId) ||
-                            (sd.DecisionId != null && sd.DecisionId == Guid.Parse(supportDocumentTypesDto.DecisionId))) &&
-                        (string.IsNullOrWhiteSpace(supportDocumentTypesDto.TaskId) ||
-                            (sd.TaskId != null && sd.TaskId == Guid.Parse(supportDocumentTypesDto.TaskId))) &&
-                        (string.IsNullOrWhiteSpace(supportDocumentTypesDto.MeetingId) ||
-                            (sd.MeetingId != null && sd.MeetingId == Guid.Parse(supportDocumentTypesDto.MeetingId))) &&
                         (string.IsNullOrWhiteSpace(supportDocumentTypesDto.UserProfileID) ||
                             (sd.UserProfileID == Guid.Parse(supportDocumentTypesDto.UserProfileID))))
                     .ToListAsync();
@@ -97,20 +81,14 @@ namespace DotNet.Web.Api.Template.Repositories
             return await _context.SupportDocuments
                 .AnyAsync(sd => sd.FileName == fileName &&
                                 !sd.IsDeleted &&
-                                (relatedEntityName == "Decision" && sd.DecisionId == relatedEntityId ||
-                                 relatedEntityName == "Task" && sd.TaskId == relatedEntityId ||
-                                 relatedEntityName == "Meeting" && sd.MeetingId == relatedEntityId ||
-                                 relatedEntityName == "UserProfile" && sd.UserProfileID == relatedEntityId));
+                                (relatedEntityName == "UserProfile" && sd.UserProfileID == relatedEntityId));
         }
 
         public async Task<bool> AnyFileExistsForEntityIdAsync(Guid relatedEntityId)
         {
             return await _context.SupportDocuments
                 .AnyAsync(sd => !sd.IsDeleted &&
-                                (sd.DecisionId == relatedEntityId ||
-                                 sd.TaskId == relatedEntityId ||
-                                 sd.MeetingId == relatedEntityId ||
-                                 sd.UserProfileID == relatedEntityId));
+                                (sd.UserProfileID == relatedEntityId));
         }
 
         public async Task<Guid?> GetSupportDocumentIdIfExistsAsync(string fileName, Guid relatedEntityId, string relatedEntityName)
@@ -118,10 +96,7 @@ namespace DotNet.Web.Api.Template.Repositories
             var supportDocument = await _context.SupportDocuments
                 .Where(sd => sd.FileName == fileName &&
                              !sd.IsDeleted &&
-                             (relatedEntityName == "Decision" && sd.DecisionId == relatedEntityId ||
-                              relatedEntityName == "Task" && sd.TaskId == relatedEntityId ||
-                              relatedEntityName == "Meeting" && sd.MeetingId == relatedEntityId ||
-                              relatedEntityName == "UserProfile" && sd.UserProfileID == relatedEntityId))
+                             (relatedEntityName == "UserProfile" && sd.UserProfileID == relatedEntityId))
                 .FirstOrDefaultAsync();
 
             return supportDocument?.Id;

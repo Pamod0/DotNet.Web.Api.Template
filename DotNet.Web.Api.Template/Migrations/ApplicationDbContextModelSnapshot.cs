@@ -129,12 +129,6 @@ namespace DotNet.Web.Api.Template.Migrations
                             Id = new Guid("00000000-0000-0000-0000-000000000002"),
                             Name = "User",
                             NormalizedName = "USER"
-                        },
-                        new
-                        {
-                            Id = new Guid("00000000-0000-0000-0000-000000000003"),
-                            Name = "ExcoMember",
-                            NormalizedName = "EXCOMEMBER"
                         });
                 });
 
@@ -161,9 +155,6 @@ namespace DotNet.Web.Api.Template.Migrations
                         .HasColumnType("datetime(6)");
 
                     b.Property<Guid?>("DeletedUserId")
-                        .HasColumnType("char(36)");
-
-                    b.Property<Guid>("DepartmentId")
                         .HasColumnType("char(36)");
 
                     b.Property<string>("Email")
@@ -228,8 +219,6 @@ namespace DotNet.Web.Api.Template.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("DepartmentId");
-
                     b.HasIndex("NormalizedEmail")
                         .HasDatabaseName("EmailIndex");
 
@@ -241,249 +230,6 @@ namespace DotNet.Web.Api.Template.Migrations
                         .IsUnique();
 
                     b.ToTable("AspNetUsers", (string)null);
-                });
-
-            modelBuilder.Entity("DotNet.Web.Api.Template.Models.Decisions.Decision", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("char(36)");
-
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("datetime(6)");
-
-                    b.Property<Guid>("CreatedUserId")
-                        .HasColumnType("char(36)");
-
-                    b.Property<DateTime>("Deadline")
-                        .HasColumnType("datetime(6)");
-
-                    b.Property<DateTime>("DecisionDate")
-                        .HasColumnType("datetime(6)");
-
-                    b.Property<int>("DecisionType")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime?>("DeletedAt")
-                        .HasColumnType("datetime(6)");
-
-                    b.Property<Guid?>("DeletedUserId")
-                        .HasColumnType("char(36)");
-
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasMaxLength(1000)
-                        .HasColumnType("varchar(1000)");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("tinyint(1)");
-
-                    b.Property<Guid>("MeetingId")
-                        .HasColumnType("char(36)");
-
-                    b.Property<string>("ReferenceId")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("varchar(50)");
-
-                    b.Property<int>("Status")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("UpdatedAt")
-                        .HasColumnType("datetime(6)");
-
-                    b.Property<Guid?>("UpdatedUserId")
-                        .HasColumnType("char(36)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("MeetingId");
-
-                    b.ToTable("Decisions");
-                });
-
-            modelBuilder.Entity("DotNet.Web.Api.Template.Models.Decisions.DecisionDepartment", b =>
-                {
-                    b.Property<Guid>("DecisionId")
-                        .HasColumnType("char(36)");
-
-                    b.Property<Guid>("DepartmentId")
-                        .HasColumnType("char(36)");
-
-                    b.HasKey("DecisionId", "DepartmentId");
-
-                    b.HasIndex("DepartmentId");
-
-                    b.ToTable("DecisionDepartments");
-                });
-
-            modelBuilder.Entity("DotNet.Web.Api.Template.Models.Decisions.Meeting", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("char(36)");
-
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("datetime(6)");
-
-                    b.Property<Guid>("CreatedUserId")
-                        .HasColumnType("char(36)");
-
-                    b.Property<DateTime?>("DeletedAt")
-                        .HasColumnType("datetime(6)");
-
-                    b.Property<Guid?>("DeletedUserId")
-                        .HasColumnType("char(36)");
-
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
-                    b.Property<TimeOnly?>("EndTime")
-                        .HasColumnType("time(6)");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("tinyint(1)");
-
-                    b.Property<DateOnly>("MeetingDate")
-                        .HasColumnType("date");
-
-                    b.Property<bool>("SendNotificationToParticipants")
-                        .HasColumnType("tinyint(1)");
-
-                    b.Property<TimeOnly>("StartTime")
-                        .HasColumnType("time(6)");
-
-                    b.Property<DateTime?>("UpdatedAt")
-                        .HasColumnType("datetime(6)");
-
-                    b.Property<Guid?>("UpdatedUserId")
-                        .HasColumnType("char(36)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Meetings");
-                });
-
-            modelBuilder.Entity("DotNet.Web.Api.Template.Models.Decisions.MeetingDepartment", b =>
-                {
-                    b.Property<Guid>("MeetingId")
-                        .HasColumnType("char(36)");
-
-                    b.Property<Guid>("DepartmentId")
-                        .HasColumnType("char(36)");
-
-                    b.HasKey("MeetingId", "DepartmentId");
-
-                    b.HasIndex("DepartmentId");
-
-                    b.ToTable("MeetingDepartments");
-                });
-
-            modelBuilder.Entity("DotNet.Web.Api.Template.Models.Decisions.Task", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("char(36)");
-
-                    b.Property<string>("Comment")
-                        .HasMaxLength(1000)
-                        .HasColumnType("varchar(1000)");
-
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("datetime(6)");
-
-                    b.Property<Guid>("CreatedUserId")
-                        .HasColumnType("char(36)");
-
-                    b.Property<Guid>("DecisionId")
-                        .HasColumnType("char(36)");
-
-                    b.Property<DateTime?>("DeletedAt")
-                        .HasColumnType("datetime(6)");
-
-                    b.Property<Guid?>("DeletedUserId")
-                        .HasColumnType("char(36)");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("tinyint(1)");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(200)
-                        .HasColumnType("varchar(200)");
-
-                    b.Property<DateTime?>("UpdatedAt")
-                        .HasColumnType("datetime(6)");
-
-                    b.Property<Guid?>("UpdatedUserId")
-                        .HasColumnType("char(36)");
-
-                    b.Property<bool>("isCompleted")
-                        .HasColumnType("tinyint(1)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("DecisionId");
-
-                    b.ToTable("Tasks");
-                });
-
-            modelBuilder.Entity("DotNet.Web.Api.Template.Models.Decisions.TaskDepartment", b =>
-                {
-                    b.Property<Guid>("TaskId")
-                        .HasColumnType("char(36)");
-
-                    b.Property<Guid>("DepartmentId")
-                        .HasColumnType("char(36)");
-
-                    b.HasKey("TaskId", "DepartmentId");
-
-                    b.HasIndex("DepartmentId");
-
-                    b.ToTable("TaskDepartment");
-                });
-
-            modelBuilder.Entity("DotNet.Web.Api.Template.Models.Department", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("char(36)");
-
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("datetime(6)");
-
-                    b.Property<Guid>("CreatedUserId")
-                        .HasColumnType("char(36)");
-
-                    b.Property<DateTime?>("DeletedAt")
-                        .HasColumnType("datetime(6)");
-
-                    b.Property<Guid?>("DeletedUserId")
-                        .HasColumnType("char(36)");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("tinyint(1)");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("varchar(100)");
-
-                    b.Property<string>("ShortName")
-                        .IsRequired()
-                        .HasMaxLength(10)
-                        .HasColumnType("varchar(10)");
-
-                    b.Property<DateTime?>("UpdatedAt")
-                        .HasColumnType("datetime(6)");
-
-                    b.Property<Guid?>("UpdatedUserId")
-                        .HasColumnType("char(36)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Departments");
                 });
 
             modelBuilder.Entity("DotNet.Web.Api.Template.Models.FileUploads.SupportDocument", b =>
@@ -500,9 +246,6 @@ namespace DotNet.Web.Api.Template.Migrations
                         .HasColumnType("datetime(6)");
 
                     b.Property<Guid>("CreatedUserId")
-                        .HasColumnType("char(36)");
-
-                    b.Property<Guid?>("DecisionId")
                         .HasColumnType("char(36)");
 
                     b.Property<DateTime?>("DeletedAt")
@@ -531,12 +274,6 @@ namespace DotNet.Web.Api.Template.Migrations
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("tinyint(1)");
 
-                    b.Property<Guid?>("MeetingId")
-                        .HasColumnType("char(36)");
-
-                    b.Property<Guid?>("TaskId")
-                        .HasColumnType("char(36)");
-
                     b.Property<DateTime?>("UpdatedAt")
                         .HasColumnType("datetime(6)");
 
@@ -547,12 +284,6 @@ namespace DotNet.Web.Api.Template.Migrations
                         .HasColumnType("char(36)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("DecisionId");
-
-                    b.HasIndex("MeetingId");
-
-                    b.HasIndex("TaskId");
 
                     b.ToTable("SupportDocuments");
                 });
@@ -717,122 +448,11 @@ namespace DotNet.Web.Api.Template.Migrations
 
             modelBuilder.Entity("DotNet.Web.Api.Template.Models.Auth.ApplicationUser", b =>
                 {
-                    b.HasOne("DotNet.Web.Api.Template.Models.Department", "Department")
-                        .WithMany("Users")
-                        .HasForeignKey("DepartmentId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("DotNet.Web.Api.Template.Models.FileUploads.SupportDocument", "ProfilePicture")
                         .WithOne("ApplicationUser")
                         .HasForeignKey("DotNet.Web.Api.Template.Models.Auth.ApplicationUser", "ProfilePictureId");
 
-                    b.Navigation("Department");
-
                     b.Navigation("ProfilePicture");
-                });
-
-            modelBuilder.Entity("DotNet.Web.Api.Template.Models.Decisions.Decision", b =>
-                {
-                    b.HasOne("DotNet.Web.Api.Template.Models.Decisions.Meeting", "Meeting")
-                        .WithMany("Decisions")
-                        .HasForeignKey("MeetingId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Meeting");
-                });
-
-            modelBuilder.Entity("DotNet.Web.Api.Template.Models.Decisions.DecisionDepartment", b =>
-                {
-                    b.HasOne("DotNet.Web.Api.Template.Models.Decisions.Decision", "Decision")
-                        .WithMany("DecisionDepartments")
-                        .HasForeignKey("DecisionId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("DotNet.Web.Api.Template.Models.Department", "Department")
-                        .WithMany("DecisionDepartments")
-                        .HasForeignKey("DepartmentId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.Navigation("Decision");
-
-                    b.Navigation("Department");
-                });
-
-            modelBuilder.Entity("DotNet.Web.Api.Template.Models.Decisions.MeetingDepartment", b =>
-                {
-                    b.HasOne("DotNet.Web.Api.Template.Models.Department", "Department")
-                        .WithMany("MeetingDepartments")
-                        .HasForeignKey("DepartmentId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.HasOne("DotNet.Web.Api.Template.Models.Decisions.Meeting", "Meeting")
-                        .WithMany("MeetingDepartments")
-                        .HasForeignKey("MeetingId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Department");
-
-                    b.Navigation("Meeting");
-                });
-
-            modelBuilder.Entity("DotNet.Web.Api.Template.Models.Decisions.Task", b =>
-                {
-                    b.HasOne("DotNet.Web.Api.Template.Models.Decisions.Decision", "Decision")
-                        .WithMany("Tasks")
-                        .HasForeignKey("DecisionId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Decision");
-                });
-
-            modelBuilder.Entity("DotNet.Web.Api.Template.Models.Decisions.TaskDepartment", b =>
-                {
-                    b.HasOne("DotNet.Web.Api.Template.Models.Department", "Department")
-                        .WithMany("TaskDepartments")
-                        .HasForeignKey("DepartmentId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.HasOne("DotNet.Web.Api.Template.Models.Decisions.Task", "Task")
-                        .WithMany("TaskDepartments")
-                        .HasForeignKey("TaskId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Department");
-
-                    b.Navigation("Task");
-                });
-
-            modelBuilder.Entity("DotNet.Web.Api.Template.Models.FileUploads.SupportDocument", b =>
-                {
-                    b.HasOne("DotNet.Web.Api.Template.Models.Decisions.Decision", "Decision")
-                        .WithMany("SupportDocuments")
-                        .HasForeignKey("DecisionId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("DotNet.Web.Api.Template.Models.Decisions.Meeting", "Meeting")
-                        .WithMany("SupportDocuments")
-                        .HasForeignKey("MeetingId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("DotNet.Web.Api.Template.Models.Decisions.Task", "Task")
-                        .WithMany("SupportDocuments")
-                        .HasForeignKey("TaskId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.Navigation("Decision");
-
-                    b.Navigation("Meeting");
-
-                    b.Navigation("Task");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<System.Guid>", b =>
@@ -884,42 +504,6 @@ namespace DotNet.Web.Api.Template.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-                });
-
-            modelBuilder.Entity("DotNet.Web.Api.Template.Models.Decisions.Decision", b =>
-                {
-                    b.Navigation("DecisionDepartments");
-
-                    b.Navigation("SupportDocuments");
-
-                    b.Navigation("Tasks");
-                });
-
-            modelBuilder.Entity("DotNet.Web.Api.Template.Models.Decisions.Meeting", b =>
-                {
-                    b.Navigation("Decisions");
-
-                    b.Navigation("MeetingDepartments");
-
-                    b.Navigation("SupportDocuments");
-                });
-
-            modelBuilder.Entity("DotNet.Web.Api.Template.Models.Decisions.Task", b =>
-                {
-                    b.Navigation("SupportDocuments");
-
-                    b.Navigation("TaskDepartments");
-                });
-
-            modelBuilder.Entity("DotNet.Web.Api.Template.Models.Department", b =>
-                {
-                    b.Navigation("DecisionDepartments");
-
-                    b.Navigation("MeetingDepartments");
-
-                    b.Navigation("TaskDepartments");
-
-                    b.Navigation("Users");
                 });
 
             modelBuilder.Entity("DotNet.Web.Api.Template.Models.FileUploads.SupportDocument", b =>

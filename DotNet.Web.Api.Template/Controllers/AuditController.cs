@@ -1,7 +1,5 @@
 ﻿using DotNet.Web.Api.Template.DTOs.Audit;
-using DotNet.Web.Api.Template.DTOs.Department;
 using DotNet.Web.Api.Template.Models;
-using DotNet.Web.Api.Template.Services;
 using DotNet.Web.Api.Template.Services.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;

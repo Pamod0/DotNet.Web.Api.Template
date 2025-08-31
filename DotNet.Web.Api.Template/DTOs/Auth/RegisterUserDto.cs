@@ -16,7 +16,5 @@ namespace DotNet.Web.Api.Template.DTOs.Auth
         public string? FirstName { get; set; }
 
         public string? LastName { get; set; }
-
-        public string? Department { get; set; }
     }
 }

@@ -11,9 +11,6 @@ namespace DotNet.Web.Api.Template.DTOs.User
         public required string LastName { get; set; }
 
         [Required]
-        public required Guid DepartmentId { get; set; }
-
-        [Required]
         [EmailAddress]
         public required string Email { get; set; }
 

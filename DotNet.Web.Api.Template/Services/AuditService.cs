@@ -1,13 +1,10 @@
-﻿using DotNet.Web.Api.Template.Data;
+﻿using AutoMapper;
+using DotNet.Web.Api.Template.Data;
 using DotNet.Web.Api.Template.DTOs.Audit;
-using DotNet.Web.Api.Template.DTOs.Department;
 using DotNet.Web.Api.Template.Models;
 using DotNet.Web.Api.Template.Models.Audit;
-using DotNet.Web.Api.Template.Models.Decisions;
-using DotNet.Web.Api.Template.Repositories;
 using DotNet.Web.Api.Template.Repositories.Interfaces;
 using DotNet.Web.Api.Template.Services.Interfaces;
-using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 using Task = System.Threading.Tasks.Task;
 

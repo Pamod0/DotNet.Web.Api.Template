@@ -8,7 +8,6 @@ namespace DotNet.Web.Api.Template.Repositories.Interfaces
     {
         Task<ApplicationUser?> GetUserByIdAsync(Guid userId);
         Task<Guid?> GetFirstProfilePicIdAsync(Guid relatedEntityId);
-        Task<IEnumerable<ApplicationUser>> GetAllUsersInDepartmentAsync(Guid departmentId);
         Task<IEnumerable<SupportDocument>> GetAllSupportDocumentsAsync(SupportDocumentTypesDto? supportDocumentTypesDto);
     }
 }

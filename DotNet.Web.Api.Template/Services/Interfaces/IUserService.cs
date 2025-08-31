@@ -11,6 +11,5 @@ namespace DotNet.Web.Api.Template.Services.Interfaces
         Task<ApiResponse> UpdateUserAsync(UpdateUserDto updateUserDto);
         Task<IEnumerable<UserDropdownDto>> GetAllRolesAsync();
         Task<ApiResponse> DeleteUserAsync(Guid userId);
-        Task<string?> GetUserDepartmentAsync(Guid userId);
     }
 }

@@ -1,6 +1,4 @@
 ﻿using DotNet.Web.Api.Template.Data;
-using DotNet.Web.Api.Template.DTOs.Department;
-using DotNet.Web.Api.Template.Models;
 using DotNet.Web.Api.Template.Models.Audit;
 using DotNet.Web.Api.Template.Repositories.Interfaces;
 using Microsoft.EntityFrameworkCore;

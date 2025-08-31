@@ -24,7 +24,6 @@ namespace DotNet.Web.Api.Template.Services
         public async Task<UserDTO?> GetUserByIdAsync(Guid userId)
         {
             var user = await _userManager.Users
-                .Include(u => u.Department)
                 .FirstOrDefaultAsync(u => u.Id == userId);
 
             if (user == null)
@@ -46,9 +45,7 @@ namespace DotNet.Web.Api.Template.Services
                 LockoutEnd = user.LockoutEnd,
                 LockoutEnabled = user.LockoutEnabled,
                 AccessFailedCount = user.AccessFailedCount,
-                Department = user.Department?.Name,
-
-                Role = roles.FirstOrDefault()
+                Role = roles.FirstOrDefault() ?? string.Empty
             };
         }
 
@@ -81,9 +78,7 @@ namespace DotNet.Web.Api.Template.Services
                         LockoutEnd = exactUser.LockoutEnd,
                         LockoutEnabled = exactUser.LockoutEnabled,
                         AccessFailedCount = exactUser.AccessFailedCount,
-                        Department = exactUser.Department?.Name,
-                        // Assuming a user has only one role for simplicity
-                        Role = roles.FirstOrDefault()
+                        Role = roles.FirstOrDefault() ?? string.Empty
                     };
                     return new PagedResponse<IEnumerable<UserDTO>>(1, 1, 1, new List<UserDTO> { userDto });
                 }
@@ -98,7 +93,6 @@ namespace DotNet.Web.Api.Template.Services
             var totalRecords = await query.CountAsync();
 
             var users = await query
-                .Include(u => u.Department)
                 .Skip((request.Page - 1) * request.PageSize)
                 .Take(request.PageSize)
                 .ToListAsync();
@@ -123,9 +117,7 @@ namespace DotNet.Web.Api.Template.Services
                     LockoutEnd = user.LockoutEnd,
                     LockoutEnabled = user.LockoutEnabled,
                     AccessFailedCount = user.AccessFailedCount,
-                    Department = user.Department?.Name,
-                    // Assuming a user has only one role for simplicity, you can also join them if needed
-                    Role = roles.FirstOrDefault()
+                    Role = roles.FirstOrDefault() ?? string.Empty
                 });
             }
 
@@ -140,7 +132,6 @@ namespace DotNet.Web.Api.Template.Services
                 Email = createUser.Email,
                 FirstName = createUser.FirstName,
                 LastName = createUser.LastName,
-                DepartmentId = createUser.DepartmentId,
             };
 
             string password = PasswordGenerator.Generate();
@@ -215,7 +206,6 @@ namespace DotNet.Web.Api.Template.Services
             user.FirstName = updateUserDto.FirstName ?? user.FirstName;
             user.LastName = updateUserDto.LastName ?? user.LastName;
             user.Email = updateUserDto.Email ?? user.Email;
-            user.DepartmentId = updateUserDto.DepartmentId ?? user.DepartmentId;
 
             if (!String.IsNullOrEmpty(updateUserDto.Role))
             {
@@ -324,14 +314,6 @@ namespace DotNet.Web.Api.Template.Services
                     Errors = result.Errors.Select(e => e.Description)
                 };
             }
-        }
-        public async Task<string?> GetUserDepartmentAsync(Guid userId)
-        {
-            var user = await _userManager.Users
-                .Include(u => u.Department)
-                .FirstOrDefaultAsync(u => u.Id == userId);
-
-            return user?.Department?.Name;
         }
 
     }

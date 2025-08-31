@@ -9,10 +9,6 @@ namespace DotNet.Web.Api.Template.Models.Auth
         public required string FirstName { get; set; }
         public required string LastName { get; set; }
 
-        public Guid DepartmentId { get; set; }
-
-        // Navigation property
-        public virtual Department Department { get; set; } = null!;
         public Guid? ProfilePictureId { get; set; }
         public virtual SupportDocument? ProfilePicture { get; set; }
 

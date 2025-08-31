@@ -2,7 +2,6 @@ using DotNet.Web.Api.Template.Configurations;
 using DotNet.Web.Api.Template.Data;
 using DotNet.Web.Api.Template.Helpers;
 using DotNet.Web.Api.Template.Hubs;
-using DotNet.Web.Api.Template.Models;
 using DotNet.Web.Api.Template.Models.Auth;
 using DotNet.Web.Api.Template.Models.User;
 using DotNet.Web.Api.Template.Repositories;
@@ -128,17 +127,11 @@ builder.Services.Configure<DataProtectionTokenProviderOptions>(options =>
     options.TokenLifespan = TimeSpan.FromHours(24); // Set expiration to 24 hours
 });
 
-// Register the background service
-builder.Services.AddHostedService<DeadlineCheckService>();
-
 // Register Repositories
 builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
 builder.Services.AddScoped<IAuditRepository, AuditRepository>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IFileUploadRepository, FileUploadRepository>();
-builder.Services.AddScoped<IDecisionRepository, DecisionRepository>();
-builder.Services.AddScoped<IMeetingRepository, MeetingRepository>();
-builder.Services.AddScoped<IDepartmentRepository, DepartmentRepository>();
 
 // Register Services
 builder.Services.AddScoped<IAuthService, AuthService>();
@@ -146,9 +139,6 @@ builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<INotificationService, NotificationService>();
 builder.Services.AddScoped<IAuditService, AuditService>();
 builder.Services.AddScoped<IFileStorageService, LocalStorageService>();
-builder.Services.AddScoped<IDecisionService, DecisionService>();
-builder.Services.AddScoped<IMeetingService, MeetingService>();
-builder.Services.AddScoped<IDepartmentService, DepartmentService>();
 
 // Configure Email Service
 builder.Services.Configure<EmailSettings>(builder.Configuration.GetSection("EmailSettings"));
@@ -238,30 +228,6 @@ using (var scope = app.Services.CreateScope())
 
         context.Database.Migrate(); // Apply pending migrations
 
-        // --- Explicit Department Seeding ---
-        // Ensure departments exist before seeding users who depend on them.
-        List<Department> seededDepartments = new List<Department>(); // Declare a list to store seeded departments
-        if (!context.Departments.Any())
-        {
-            seededDepartments = new List<Department> // Assign to the list
-            {
-                new Department { Id = Guid.NewGuid(), Name = "Human Resources", ShortName = "HR" },
-                new Department { Id = Guid.NewGuid(), Name = "Information Technology", ShortName = "IT" },
-                new Department { Id = Guid.NewGuid(), Name = "Finance", ShortName = "FIN" },
-                new Department { Id = Guid.NewGuid(), Name = "Operations", ShortName = "OPS" }
-            };
-            context.Departments.AddRange(seededDepartments); //
-            await context.SaveChangesAsync(); // <-- CRUCIAL: Save departments to DB now
-            logger.LogInformation("Departments seeded successfully.");
-        }
-        else
-        {
-            logger.LogInformation("Departments already exist. Skipping seeding.");
-            // If departments already exist, retrieve them to use their IDs
-            seededDepartments = await context.Departments.ToListAsync();
-        }
-        // --- End of Explicit Department Seeding ---
-
         // Seed roles (if not already handled by HasData in OnModelCreating)
         string[] roleNames = { "Admin", "User" };
         foreach (var roleName in roleNames)
@@ -274,15 +240,6 @@ using (var scope = app.Services.CreateScope())
             }
         }
 
-        // --- IMPORTANT: Get a Department ID for the Admin user ---
-        // Choose one of the seeded departments, e.g., the first one, or a specific one by name
-        // Ensure seededDepartments is not empty before trying to access elements.
-        Guid adminDepartmentId = Guid.Empty;
-        if (seededDepartments.Any())
-        {
-            adminDepartmentId = seededDepartments.First().Id; // Or pick a specific one like .FirstOrDefault(d => d.ShortName == "IT")?.Id ?? Guid.Empty;
-        }
-
         // Seed Admin user
         var adminUser = new ApplicationUser
         {
@@ -291,29 +248,20 @@ using (var scope = app.Services.CreateScope())
             EmailConfirmed = true,
             FirstName = "Admin",
             LastName = "User",
-            DepartmentId = adminDepartmentId // <--- Set the DepartmentId here!
         };
 
         var user = await userManager.FindByEmailAsync(adminUser.Email);
         if (user == null)
         {
-            // Only attempt to create if a valid DepartmentId was found
-            if (adminDepartmentId != Guid.Empty)
+            var createAdmin = await userManager.CreateAsync(adminUser, "AdminP@ssw0rd");
+            if (createAdmin.Succeeded)
             {
-                var createAdmin = await userManager.CreateAsync(adminUser, "AdminP@ssw0rd");
-                if (createAdmin.Succeeded)
-                {
-                    await userManager.AddToRoleAsync(adminUser, "Admin");
-                    logger.LogInformation("Admin user created and assigned 'Admin' role.");
-                }
-                else
-                {
-                    logger.LogError("Failed to create admin user: {Errors}", string.Join(", ", createAdmin.Errors.Select(e => e.Description)));
-                }
+                await userManager.AddToRoleAsync(adminUser, "Admin");
+                logger.LogInformation("Admin user created and assigned 'Admin' role.");
             }
             else
             {
-                logger.LogError("Cannot create admin user: No valid Department ID found for seeding.");
+                logger.LogError("Failed to create admin user: {Errors}", string.Join(", ", createAdmin.Errors.Select(e => e.Description)));
             }
         }
         else

@@ -1,6 +1,5 @@
 ﻿using DotNet.Web.Api.Template.DTOs.Auth;
 using DotNet.Web.Api.Template.Models.Auth;
-using DotNet.Web.Api.Template.Models;
 using DotNet.Web.Api.Template.Models.User;
 using DotNet.Web.Api.Template.Services.Interfaces;
 using Microsoft.AspNetCore.Identity;
@@ -9,7 +8,6 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Net;
 using System.Security.Claims;
 using System.Text;
-using Task = System.Threading.Tasks.Task;
 
 namespace DotNet.Web.Api.Template.Services
 {
@@ -49,15 +47,12 @@ namespace DotNet.Web.Api.Template.Services
         {
             try
             {
-                var department = await GetDepartmentByNameAsync(registerUser.Department); // Fetch department object
-
                 var user = new ApplicationUser
                 {
                     UserName = registerUser.Email,
                     Email = registerUser.Email,
                     FirstName = String.IsNullOrEmpty(registerUser.FirstName) ? "N/A" : registerUser.FirstName,
-                    LastName = String.IsNullOrEmpty(registerUser.LastName) ? "N/A" : registerUser.LastName,
-                    Department = department ?? new Department { Name = "N/A", ShortName = "N/A" }
+                    LastName = String.IsNullOrEmpty(registerUser.LastName) ? "N/A" : registerUser.LastName
                 };
 
                 var creationResult = await _userManager.CreateAsync(user, registerUser.Password);
@@ -100,18 +95,6 @@ namespace DotNet.Web.Api.Template.Services
                 _logger.LogError(ex, "An error occurred during user registration for email {Email}", registerUser.Email);
                 throw; // Let the controller handle the exception
             }
-        }
-
-        private async Task<Department?> GetDepartmentByNameAsync(string? departmentName)
-        {
-            if (string.IsNullOrEmpty(departmentName))
-            {
-                return null;
-            }
-
-            // Replace with actual logic to fetch department from database or other source
-            // Example: _dbContext.Departments.FirstOrDefaultAsync(d => d.Name == departmentName);
-            return await Task.FromResult(new Department { Name = departmentName, ShortName = departmentName.Substring(0, Math.Min(departmentName.Length, 3)) });
         }
 
         public async Task<LoginResult> Login(LoginUser loginUser)
@@ -169,8 +152,6 @@ namespace DotNet.Web.Api.Template.Services
                     await _userManager.ResetAccessFailedCountAsync(user);
 
                     await _auditService.LogUserActionAsync(user.Id, "UserLoggedIn");
-
-                    var userDepartment = await _userService.GetUserDepartmentAsync(user.Id);
                 }
 
                 // Generate regular JWT token
@@ -185,8 +166,6 @@ namespace DotNet.Web.Api.Template.Services
                     Expiration = DateTime.Now.AddMinutes(_config.GetValue<int>("Jwt:ExpireInMinutes")),
                     UserId = user.Id,
                     Roles = [.. roles],
-                    UserDepartment = await _userService.GetUserDepartmentAsync(user.Id),
-                    UserDepartmentId = user.Department?.Id ?? Guid.Empty,
                     FirstName = user.FirstName,
                     LastName = user.LastName,
                 };

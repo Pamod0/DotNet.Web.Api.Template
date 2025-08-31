@@ -1,14 +1,8 @@
-﻿using DotNet.Web.Api.Template.Configurations;
+﻿using AutoMapper;
+using DotNet.Web.Api.Template.Configurations;
 using DotNet.Web.Api.Template.DTOs;
-using DotNet.Web.Api.Template.DTOs.Department;
-using DotNet.Web.Api.Template.DTOs.Meeeting;
-using DotNet.Web.Api.Template.Models;
-using DotNet.Web.Api.Template.Models.Decisions;
-using DotNet.Web.Api.Template.Models.FileUploads;
 using DotNet.Web.Api.Template.Repositories.Interfaces;
 using DotNet.Web.Api.Template.Services.Interfaces;
-using AutoMapper;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 
 namespace DotNet.Web.Api.Template.Services

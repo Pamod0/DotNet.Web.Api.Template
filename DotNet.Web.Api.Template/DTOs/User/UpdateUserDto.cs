@@ -8,7 +8,6 @@ namespace DotNet.Web.Api.Template.DTOs.User
         public required Guid Id { get; set; }
         public string? FirstName { get; set; }
         public string? LastName { get; set; }
-        public Guid? DepartmentId { get; set; }
 
         [EmailAddress]
         public string? Email { get; set; }
