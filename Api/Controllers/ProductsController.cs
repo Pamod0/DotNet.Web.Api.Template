@@ -1,4 +1,4 @@
-﻿using Application.Services;
+﻿using Application.Sample.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Api.Controllers

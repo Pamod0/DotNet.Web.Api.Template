@@ -1,13 +1,8 @@
-﻿using Application.DTOs;
-using Application.Interfaces;
-using Domain.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Application.Sample.DTOs;
+using Application.Sample.Interfaces;
+using Domain.Sample.Entities;
 
-namespace Application.Services
+namespace Application.Sample.Services
 {
     public class ProductService
     {
